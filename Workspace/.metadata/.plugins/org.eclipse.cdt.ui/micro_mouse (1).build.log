@@ -1,0 +1,13 @@
+14:00:28 **** Incremental Build of configuration Debug for project micro_mouse (1) ****
+make -j12 all 
+arm-none-eabi-size  micro_mouse\ (1).elf 
+arm-none-eabi-objdump -h -S micro_mouse\ (1).elf  > "micro_mouse (1).list"
+c:/st/stm32cubeide_1.19.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.make.win32_2.2.0.202409170845/tools/bin/sh: syntax error: unexpected "("
+make: *** [makefile:69: default.size.stdout] Error 2
+make: *** Waiting for unfinished jobs....
+c:/st/stm32cubeide_1.19.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.make.win32_2.2.0.202409170845/tools/bin/sh: syntax error: unexpected "("
+make: *** [makefile:74: micro_mouse (1).list] Error 2
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+
+14:00:28 Build Failed. 3 errors, 0 warnings. (took 477ms)
+

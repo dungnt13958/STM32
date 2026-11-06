@@ -1,0 +1,8 @@
+#include "stm32f401xe.h"
+#include "MPU6050.h"
+
+
+int main(void)
+{
+	i2c3_init();
+}

@@ -1,0 +1,52 @@
+/*
+ * MPU6050.h
+ *
+ *  Created on: Oct 31, 2026
+ *      Author: Tuan Dung Nguyen
+ */
+#ifndef INC_MPU6050_H_
+#define INC_MPU6050_H_
+
+#include "stm32f401xe.h"
+
+#define MPU_ADDR 0x68
+#define WHO_AM_I_reg 0x75
+typedef struct mpu6050_data_t {
+	float aX, aY, aZ;
+	float temp;
+	float gX, gY, gZ;
+} mpu6050_data_t;
+
+/* Relative yaw estimator. heading_deg is in the range [0, 360). */
+typedef struct heading_estimator_t{
+	float heading_deg;
+	float gyro_z_bias_dps;
+	uint32_t last_cycle;
+	uint8_t timer_started;
+} heading_estimator_t;
+
+void i2c3_init(void);
+
+void I2C3_write(uint8_t sensor_addr, uint8_t sensor_reg, uint8_t data);
+
+void I2C3_read(uint8_t sensor_addr, uint8_t sensor_reg, uint8_t* buffer, uint8_t length);
+
+uint8_t MPU6050_init(void);
+
+void MPU6050_ReadAll(mpu6050_data_t * Data);
+
+/* Set the current robot heading to 0 degrees and apply a known gyro bias. */
+void Heading_Init(heading_estimator_t *estimator, float gyro_z_bias_dps);
+
+/* Integrate gyro Z (degrees/second) over dt_s (seconds). */
+void Heading_Update(heading_estimator_t *estimator,
+				   const mpu6050_data_t *imu, float dt_s);
+
+/* Reset only the heading reference to 0 degrees. */
+void Heading_Reset(heading_estimator_t *estimator);
+
+void Heading_TimerInit(void);
+
+void Heading_UpdateNow(heading_estimator_t *estimator,
+				      const mpu6050_data_t *imu);
+#endif /* INC_MPU6050_H_ */

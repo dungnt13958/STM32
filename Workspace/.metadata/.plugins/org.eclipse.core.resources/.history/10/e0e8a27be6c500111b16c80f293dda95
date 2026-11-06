@@ -1,0 +1,15 @@
+#include "stm32f4xx_hal.h"
+
+void initButton(void)
+{
+	RCC->AHB1ENR |= 1u << 2;
+	GPIOC->MODER &= ~(3u << (2u* 13u));
+	GPIOC->PUPDR &= ~(3u << (2u * 13u));
+	GPIOC->PUPDR |= (1u << (2u *13u));
+}
+
+void timer2_init(void)
+{
+	RCC->APB1ENR |= 1u << 0;
+	TIM2->PSC =
+}

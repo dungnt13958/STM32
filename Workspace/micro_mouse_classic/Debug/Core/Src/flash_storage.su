@@ -1,0 +1,2 @@
+../Core/Src/flash_storage.c:7:6:Flash_Save_Maze	24	static
+../Core/Src/flash_storage.c:38:6:Flash_Load_Maze	24	static

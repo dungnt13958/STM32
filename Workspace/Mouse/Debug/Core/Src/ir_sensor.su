@@ -1,0 +1,10 @@
+../Core/Src/ir_sensor.c:11:13:ir_delay_us	24	static,ignoring_inline_asm
+../Core/Src/ir_sensor.c:17:13:ir_delay_ms	24	static,ignoring_inline_asm
+../Core/Src/ir_sensor.c:23:17:ADC1_Read_Channel	16	static
+../Core/Src/ir_sensor.c:30:6:IR_Init	8	static
+../Core/Src/ir_sensor.c:52:6:IR_Read_All	24	static
+../Core/Src/ir_sensor.c:82:6:IR_Calibrate_StartCell_Phase1	32	static
+../Core/Src/ir_sensor.c:105:6:IR_Calibrate_StartCell_Phase2_Front	24	static
+../Core/Src/ir_sensor.c:120:9:IR_Has_Left_Wall	4	static
+../Core/Src/ir_sensor.c:124:9:IR_Has_Right_Wall	4	static
+../Core/Src/ir_sensor.c:128:9:IR_Has_Front_Wall	16	static

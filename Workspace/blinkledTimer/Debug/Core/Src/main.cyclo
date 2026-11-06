@@ -1,0 +1,3 @@
+../Core/Src/main.c:4:6:initLed	1
+../Core/Src/main.c:13:6:timer2_init	1
+../Core/Src/main.c:32:5:main	2

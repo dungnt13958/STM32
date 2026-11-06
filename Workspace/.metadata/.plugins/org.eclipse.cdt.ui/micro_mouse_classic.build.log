@@ -1,0 +1,10 @@
+13:36:44 **** Incremental Build of configuration Debug for project micro_mouse_classic ****
+make -j12 all 
+arm-none-eabi-size  micro_mouse_classic.elf 
+   text	   data	    bss	    dec	    hex	filename
+  23644	    192	   3528	  27364	   6ae4	micro_mouse_classic.elf
+Finished building: default.size.stdout
+ 
+
+13:36:44 Build Finished. 0 errors, 0 warnings. (took 489ms)
+

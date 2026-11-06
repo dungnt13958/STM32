@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="hasShownOverlayPopupBefore" value="true"/>
+	<item key="replaceBarOpen" value="true"/>
+	<list key="searchhistory">
+		<item value="DataStruct"/>
+		<item value="}"/>
+		<item value="Buffer"/>
+		<item value="pBuff"/>
+		<item value="devAddr"/>
+		<item value="regAddr"/>
+		<item value="I2C1"/>
+		<item value="SysTick"/>
+		<item value="forward"/>
+		<item value="Encoder_Get_Left_Count"/>
+	</list>
+	<list key="replacehistory">
+		<item value="Data"/>
+		<item value="sensor_addr"/>
+		<item value="sensor_reg"/>
+		<item value="I2C3"/>
+	</list>
+</section>

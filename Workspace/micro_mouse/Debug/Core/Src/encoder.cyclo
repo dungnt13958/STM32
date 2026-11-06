@@ -1,0 +1,8 @@
+../Core/Src/encoder.c:4:6:Encoder_Init	1
+../Core/Src/encoder.c:42:6:Encoder_Reset	1
+../Core/Src/encoder.c:47:9:Encoder_Get_Left_Count	1
+../Core/Src/encoder.c:51:9:Encoder_Get_Right_Count	1
+../Core/Src/encoder.c:55:7:Encoder_Get_Left_Distance_MM	1
+../Core/Src/encoder.c:59:7:Encoder_Get_Right_Distance_MM	1
+../Core/Src/encoder.c:63:7:Encoder_Get_Distance_MM	1
+../Core/Src/encoder.c:71:7:Encoder_Get_Turn_Angle_Rad	3

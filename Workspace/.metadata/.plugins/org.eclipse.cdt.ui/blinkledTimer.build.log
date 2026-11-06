@@ -1,0 +1,10 @@
+14:54:02 **** Incremental Build of configuration Debug for project blinkledTimer ****
+make -j12 all 
+arm-none-eabi-size  blinkledTimer.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1080	      4	   1572	   2656	    a60	blinkledTimer.elf
+Finished building: default.size.stdout
+ 
+
+14:54:03 Build Finished. 0 errors, 0 warnings. (took 193ms)
+

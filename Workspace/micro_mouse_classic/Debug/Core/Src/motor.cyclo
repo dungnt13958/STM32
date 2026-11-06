@@ -1,0 +1,4 @@
+../Core/Src/motor.c:16:6:Motor_Init	1
+../Core/Src/motor.c:58:6:Motor_Short_Brake	1
+../Core/Src/motor.c:68:6:Motor_Coast_Stop	1
+../Core/Src/motor.c:80:6:Motor_Set_Speeds	9

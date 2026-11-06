@@ -1,0 +1,12 @@
+../Core/Src/mpu6500.c:53:21:Kalman1D_Update	16	static
+../Core/Src/mpu6500.c:73:7:MPU_Wrap_To_Pi	16	static
+../Core/Src/mpu6500.c:79:13:mpu_delay_loop	16	static,ignoring_inline_asm
+../Core/Src/mpu6500.c:83:16:SPI2_Transfer	16	static
+../Core/Src/mpu6500.c:90:13:MPU_Write_Reg	16	static
+../Core/Src/mpu6500.c:98:6:MPU_Init	8	static
+../Core/Src/mpu6500.c:129:16:MPU_Read_Raw_GZ	16	static
+../Core/Src/mpu6500.c:139:6:MPU_Calibrate_Zero	24	static
+../Core/Src/mpu6500.c:161:7:MPU_Get_Calibrated_GZ_RadS	24	static
+../Core/Src/mpu6500.c:180:6:MPU_Update_Angle	24	static
+../Core/Src/mpu6500.c:191:6:MPU_Reset_Turn_Angle	4	static
+../Core/Src/mpu6500.c:195:7:MPU_Get_Turn_Angle_Rad	4	static

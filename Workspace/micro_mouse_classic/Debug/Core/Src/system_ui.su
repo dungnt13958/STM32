@@ -1,0 +1,9 @@
+../Core/Src/system_ui.c:9:6:delay_us	24	static,ignoring_inline_asm
+../Core/Src/system_ui.c:15:6:delay_ms	24	static,ignoring_inline_asm
+../Core/Src/system_ui.c:21:6:UI_All_LEDs_Off	4	static
+../Core/Src/system_ui.c:28:6:UI_All_LEDs_On	4	static
+../Core/Src/system_ui.c:35:6:UI_Init	8	static
+../Core/Src/system_ui.c:56:6:UI_Show_Mode	16	static
+../Core/Src/system_ui.c:66:6:UI_Blink_LED1	24	static
+../Core/Src/system_ui.c:75:15:UI_Read_Button	16	static
+../Core/Src/system_ui.c:104:6:UI_Show_Binary	16	static

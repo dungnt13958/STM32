@@ -1,0 +1,14 @@
+../Drivers/CMSIS/Include/core_cm4.h:1814:22:__NVIC_SetPriority	16	static
+../Drivers/CMSIS/Include/core_cm4.h:2022:26:SysTick_Config	16	static
+../Core/Src/motion.c:60:21:Clamp_Value	24	static
+../Core/Src/motion.c:67:14:PID_Compute_Linear	32	static
+../Core/Src/motion.c:79:13:PID_Reset	16	static
+../Core/Src/motion.c:85:6:Motion_Init	8	static
+../Core/Src/motion.c:126:6:Motion_SysTick_Handler_5ms	248	static
+../Core/Src/motion.c:417:6:Motion_Delay_MS	24	static,ignoring_inline_asm
+../Core/Src/motion.c:425:6:Move_Forward_MM	40	static,ignoring_inline_asm
+../Core/Src/motion.c:531:6:Move_Forward_One_Cell	8	static
+../Core/Src/motion.c:536:6:Turn_Angle_Rad	56	static,ignoring_inline_asm
+../Core/Src/motion.c:614:6:Turn_Left_90	8	static
+../Core/Src/motion.c:615:6:Turn_Right_90	8	static
+../Core/Src/motion.c:616:6:Turn_Around_180	8	static

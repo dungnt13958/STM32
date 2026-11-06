@@ -1,0 +1,17 @@
+#include "stm32f401xe.h"
+#include "MPU6050.h"
+mpu6050_data_t mpu;
+volatile float robot_heading = 0.0f;
+int main(void)
+{
+	heading_estimator_t heading;
+	Heading_Init(&heading, 0.0f);
+	i2c3_init();
+	while(MPU6050_init() != 0u);
+	while(1)
+	{
+		MPU6050_ReadAll(&mpu);
+		Heading_Update(&heading, &mpu, dt_s)
+		robot_heading = heading.heading_deg;
+	}
+}

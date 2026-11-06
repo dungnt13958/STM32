@@ -1,0 +1,8 @@
+../Core/Src/adc.c:17:20:ADC_Delay_Peak	4	static,ignoring_inline_asm
+../Core/Src/adc.c:25:17:ADC_Read_Channel	16	static,ignoring_inline_asm
+../Core/Src/adc.c:38:6:ADC_Begin	4	static
+../Core/Src/adc.c:82:6:ADC_Update	40	static
+../Core/Src/adc.c:135:10:ADC_Get_FL	4	static
+../Core/Src/adc.c:136:10:ADC_Get_L	4	static
+../Core/Src/adc.c:137:10:ADC_Get_R	4	static
+../Core/Src/adc.c:138:10:ADC_Get_FR	4	static

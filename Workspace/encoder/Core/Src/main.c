@@ -1,0 +1,57 @@
+#include "stm32f4xx_hal.h"
+
+volatile int16_t encoderCount;
+
+void encoderPin_init(void)
+{
+	RCC->AHB1ENR |= 1u << 0;
+
+	GPIOA->MODER &= ~(3u << (2u * 6u));
+	GPIOA->MODER |= 2u << (2u * 6u);
+
+	GPIOA->MODER &= ~(3u << (2u * 7u));
+	GPIOA->MODER |= 2u << (2u * 7u);
+
+	GPIOA->AFR[0] &= ~(0xFu << (4u * 6u));
+	GPIOA->AFR[0] |= (2u << (4u * 6u));
+
+	GPIOA->AFR[0] &= ~(0xFu <<(4u * 7u));
+	GPIOA->AFR[0] |= (2u << (4u * 7u));
+
+	GPIOA->PUPDR &= ~(3u << (2u * 6u));
+	GPIOA->PUPDR |= (1u << (2u * 6u));
+
+	GPIOA->PUPDR &= ~(3u << (2u * 7u));
+	GPIOA->PUPDR |= 1u << (2u *7u);
+}
+
+void TIM3_init(void)
+{
+//	TIM3 Clock enable
+	RCC->APB1ENR |= 1u << 1u;
+	TIM3->CR1 &= ~(1U << 0);
+
+	TIM3->ARR = 0xFFFF;
+
+	TIM3->CCMR1 &= ~((3U << 0) | (3U << 8));
+	TIM3->CCMR1 |=  ((1U << 0) | (1U << 8));
+	TIM3->CCMR1 &= ~((0xFu << 4u)| (0xFu << 12u));
+
+	TIM3->CCER &= ~((1U << 1) | (1U << 5));
+	TIM3->CCER |=  ((1U << 0) | (1U << 4));
+
+	TIM3->SMCR &= ~(7U << 0);
+	TIM3->SMCR |=  (3U << 0);
+	TIM3->CNT = 0;
+	TIM3->CR1 |= (1U << 0);
+}
+
+int main(void)
+{
+	encoderPin_init();
+	TIM3_init();
+	while (1)
+	{
+	    encoderCount = (int16_t)TIM3->CNT;
+	}
+}

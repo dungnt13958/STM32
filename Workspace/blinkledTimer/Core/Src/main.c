@@ -1,0 +1,44 @@
+#include "stm32f4xx_hal.h"
+
+
+void initLed(void)
+{
+	RCC->AHB1ENR |= 1u << 0;
+	GPIOA->MODER &= ~(3u << (2u * 5u));
+	GPIOA->MODER |= (1u << (2u * 5u));
+	GPIOA->PUPDR &= ~(3u << (2u*5u));
+	GPIOA->PUPDR |= (1u << (2u * 5u));
+}
+
+void timer2_init(void)
+{
+	RCC->APB1ENR |= (1u << 0);
+	TIM2->PSC = (16000 - 1);
+	TIM2->ARR = (1000 - 1);
+	TIM2->CR1 &= ~(1u << 4u);
+
+
+//	Clear Counter
+	TIM2->CNT = 0u;
+
+//	CLear UIF flag
+	TIM2->SR &= ~(1u << 0);
+
+//	Now, start TIM2
+	TIM2->CR1 |= (1u << 0);
+}
+
+
+int main (void)
+{
+	initLed();
+	timer2_init();
+	while(1)
+	{
+		if(TIM2->SR &(1u << 0))
+		{
+			TIM2->SR &= ~(1u << 0);
+			GPIOA->ODR ^= (1u << 5u);
+		}
+	}
+}

@@ -1,0 +1,46 @@
+/*
+ * MPU6050.c
+ *
+ *  Created on: Oct 31, 2026
+ *      Author: Tuan Dung Nguyen
+ */
+#include "stm32f401xe.h"
+#include "MPU6050.h"
+
+void i2c3_init(void)
+{
+	RCC->AHB1ENR |= 1u << 0u;
+	RCC->AHB1ENR |= 1u << 2u;
+	RCC->APB1ENR |= 1u << 23u; // I2C3 Clock EN
+	GPIOA->MODER &= ~(3u << (2u * 8u));
+	GPIOA->MODER |= 2u << (2u * 8u);
+	GPIOC->MODER &= ~(3u << (2u * 9u));
+	GPIOC->MODER |= 2u << (2u * 9u);
+
+	GPIOA->OTYPER = 1u << 8u;
+	GPIOC->OTYPER = 1u << 9u;
+
+	GPIOA->AFR[1] &= ~(0xFu << (4u * 0u));
+	GPIOA->AFR[1] |= 4u << (4u * 0u);
+
+	GPIOC->AFR[1] &= ~(0xFu << (4u * 1u));
+	GPIOC->AFR[1] |= (4u << (4u * 1u));
+
+
+	I2C3->CR1 &= ~I2C_CR1_PE;
+	I2C3->CCR |= 0u << 15u;
+	I2C3->CR2 |= 42u << 0u;
+	I2C3->TRISE |= 43u;
+	I2C3->CR1 |= I2C_CR1_PE;
+}
+
+void I2C3_write(uint8_t sensor_addr, uint8_t sensor_reg, uint8_t data)
+{
+	while(I2C3->SR2 & I2C_SR2_BUSY);
+	I2C3->CR1 |= 1u << 8u;
+}
+
+void I2C3_read(uint8_t sensor_addr, uint8_t sensor_reg, uint8_t* buffer, uint8_t length)
+{
+
+}

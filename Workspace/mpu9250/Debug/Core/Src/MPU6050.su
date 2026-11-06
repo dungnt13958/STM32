@@ -1,0 +1,10 @@
+../Core/Src/MPU6050.c:10:6:i2c3_init	4	static
+../Core/Src/MPU6050.c:46:6:I2C3_write	16	static
+../Core/Src/MPU6050.c:69:6:I2C3_read	24	static
+../Core/Src/MPU6050.c:180:9:MPU6050_init	16	static
+../Core/Src/MPU6050.c:196:6:MPU6050_ReadAll	48	static
+../Core/Src/MPU6050.c:223:6:Heading_Init	16	static
+../Core/Src/MPU6050.c:234:6:Heading_Reset	16	static
+../Core/Src/MPU6050.c:242:6:Heading_TimerInit	4	static
+../Core/Src/MPU6050.c:249:6:Heading_UpdateNow	32	static
+../Core/Src/MPU6050.c:274:6:Heading_Update	24	static

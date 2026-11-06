@@ -1,0 +1,10 @@
+../Core/Src/ir_sensor.c:11:13:ir_delay_us	2
+../Core/Src/ir_sensor.c:17:13:ir_delay_ms	2
+../Core/Src/ir_sensor.c:23:17:ADC1_Read_Channel	2
+../Core/Src/ir_sensor.c:30:6:IR_Init	1
+../Core/Src/ir_sensor.c:52:6:IR_Read_All	5
+../Core/Src/ir_sensor.c:82:6:IR_Calibrate_StartCell_Phase1	2
+../Core/Src/ir_sensor.c:105:6:IR_Calibrate_StartCell_Phase2_Front	2
+../Core/Src/ir_sensor.c:120:9:IR_Has_Left_Wall	1
+../Core/Src/ir_sensor.c:124:9:IR_Has_Right_Wall	1
+../Core/Src/ir_sensor.c:128:9:IR_Has_Front_Wall	1

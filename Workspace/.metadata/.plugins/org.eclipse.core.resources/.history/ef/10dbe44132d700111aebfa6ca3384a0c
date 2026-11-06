@@ -1,0 +1,14 @@
+#include "stm32f401xe.h"
+#include "MPU6050.h"
+mpu6050_data_t mpu;
+
+int main(void)
+{
+	i2c3_init();
+	while(!MPU6050_init());
+	while(1)
+	{
+		MPU6050_ReadAll(&mpu);
+		for (volatile int i = 0; i < 200000; i++);
+	}
+}

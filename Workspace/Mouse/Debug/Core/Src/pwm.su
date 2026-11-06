@@ -1,0 +1,3 @@
+../Core/Src/pwm.c:9:6:PWM_Init	4	static
+../Core/Src/pwm.c:50:6:PWM_Set_Left	16	static
+../Core/Src/pwm.c:55:6:PWM_Set_Right	16	static

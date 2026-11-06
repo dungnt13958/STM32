@@ -1,0 +1,121 @@
+/*
+ * MPU6050.c
+ *
+ *  Created on: Oct 31, 2026
+ *      Author: Tuan Dung Nguyen
+ */
+#include "stm32f401xe.h"
+#include "MPU6050.h"
+
+void i2c3_init(void)
+{
+	RCC->AHB1ENR |= 1u << 0u;
+	RCC->AHB1ENR |= 1u << 2u;
+	RCC->APB1ENR |= 1u << 23u; // I2C3 Clock EN
+	GPIOA->MODER &= ~(3u << (2u * 8u));
+	GPIOA->MODER |= 2u << (2u * 8u);
+	GPIOC->MODER &= ~(3u << (2u * 9u));
+	GPIOC->MODER |= 2u << (2u * 9u);
+
+	GPIOA->OTYPER |= 1u << 8u;
+	GPIOC->OTYPER |= 1u << 9u;
+
+	GPIOA->AFR[1] &= ~(0xFu << (4u * 0u));
+	GPIOA->AFR[1] |= 4u << (4u * 0u);
+
+	GPIOC->AFR[1] &= ~(0xFu << (4u * 1u));
+	GPIOC->AFR[1] |= (4u << (4u * 1u));
+
+
+	I2C3->CR1 &= ~I2C_CR1_PE;
+	I2C3->CCR |= 0u << 15u;
+	I2C3->CCR = 210u;
+	I2C3->CR2 |= 42u << 0u;
+	I2C3->TRISE |= 43u;
+	I2C3->CR1 |= I2C_CR1_PE;
+}
+
+void I2C3_write(uint8_t sensor_addr, uint8_t sensor_reg, uint8_t data)
+{
+	while(I2C3->SR2 & I2C_SR2_BUSY);
+	I2C3->CR1 |= 1u << 8u;
+	while (!(I2C3->SR1 & (1u << 0)));
+
+	I2C3->DR = (sensor_addr << 1u);
+	while (!(I2C3->SR1 & I2C_SR1_ADDR));
+//	Delete ADDR flag by reading SR2 after reading SR1
+	(void)I2C3->SR1;
+	(void)I2C3->SR2;
+
+//	Send the sensor register address
+	while (!(I2C3->SR1 & I2C_SR1_TXE)); // Wait for Tx buffer to be empty
+	I2C3->DR = sensor_reg;
+
+	while (!(I2C3->SR1 & I2C_SR1_TXE));
+	I2C3->DR = data;
+
+	while (!(I2C3->SR1 & I2C_SR1_BTF));
+	I2C3->CR1 |= I2C_CR1_STOP;
+}
+
+void I2C3_read(uint8_t sensor_addr, uint8_t sensor_reg, uint8_t* buffer, uint8_t length)
+{
+	while (I2C3->SR2 & I2C_SR2_BUSY);
+	I2C3->CR1 |= I2C_CR1_START;
+	while (!(I2C3->SR1 & I2C_SR1_SB));
+
+	I2C3->DR = (sensor_addr << 1); // Master Write
+	while (!(I2C3->SR1 & I2C_SR1_ADDR));
+
+	(void)I2C3->SR1; (void)I2C3->SR2; // Clear ADDR
+
+	while (!(I2C3->SR1 & I2C_SR1_TXE));
+	I2C3->DR = sensor_reg;
+	while (!(I2C3->SR1 & I2C_SR1_BTF)); // Đảm bảo đã gửi xong byte địa chỉ
+
+    // Phase 2: Phát Repeated START để chuyển sang chế độ Master Read
+    I2C3->CR1 |= I2C_CR1_START;
+    while (!(I2C3->SR1 & I2C_SR1_SB));
+
+    I2C3->DR = (sensor_addr << 1) | 0x01; // Master Read (LSB = 1)
+    while (!(I2C3->SR1 & I2C_SR1_ADDR));
+
+    // Phase 3: Đọc dữ liệu
+    if (length == 1) {
+        // Trường hợp đọc 1 byte: Xóa ACK trước khi xóa ADDR
+        I2C3->CR1 &= ~I2C_CR1_ACK;
+        (void)I2C3->SR1; (void)I2C3->SR2; // Clear ADDR
+        I2C3->CR1 |= I2C_CR1_STOP;        // Phát STOP ngay lập tức
+
+        while (!(I2C3->SR1 & I2C_SR1_RXNE));
+        *buffer = I2C3->DR;
+    } else {
+        // Trường hợp đọc N bytes (N >= 2)
+        I2C3->CR1 |= I2C_CR1_ACK;
+        (void)I2C3->SR1; (void)I2C3->SR2; // Clear ADDR
+
+        for (uint16_t i = 0; i < length; i++) {
+            if (i == length - 2) {
+                // Đến byte kế cuối (N-2): Đợi BTF, xóa ACK, phát STOP
+                while (!(I2C3->SR1 & I2C_SR1_BTF));
+                I2C3->CR1 &= ~I2C_CR1_ACK;
+                I2C3->CR1 |= I2C_CR1_STOP;
+            }
+            while (!(I2C3->SR1 & I2C_SR1_RXNE));
+            buffer[i] = I2C3->DR;
+        }
+    }
+}
+
+uint8_t MPU6050_init(void)
+{
+	uint8_t check = 0;
+	I2C3_read(MPU_ADDR, WHO_AM_I_reg, &check, 1);
+	if(check == 0x68)
+	{
+		I2C3_write(MPU_ADDR, 0x6B, 0x00);
+		I2C3_write(MPU6050_ADDR, 0x19, 0x07);
+		I2C3_write(MPU6050_ADDR, 0x1B, 0x00);
+		I2C3_write(MPU6050_ADDR, 0x1C, 0x00);
+	}
+}

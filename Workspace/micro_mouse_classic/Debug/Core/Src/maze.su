@@ -1,0 +1,13 @@
+../Core/Src/maze.c:41:13:Maze_Is_Inside	16	static
+../Core/Src/maze.c:47:16:Maze_Opposite_Direction	16	static
+../Core/Src/maze.c:55:13:Maze_Set_Wall	32	static
+../Core/Src/maze.c:79:13:Maze_Reset_Boundary_And_Start_Walls	16	static
+../Core/Src/maze.c:106:13:Maze_Refresh_IR	16	static
+../Core/Src/maze.c:119:6:Maze_Init	8	static
+../Core/Src/maze.c:138:6:Maze_Update_Walls	32	static
+../Core/Src/maze.c:183:6:Maze_Flood_Fill	40	static
+../Core/Src/maze.c:269:13:Maze_Get_Best_Direction	24	static
+../Core/Src/maze.c:318:13:Maze_Turn_To_Direction	24	static
+../Core/Src/maze.c:344:6:Maze_Execute_Move	24	static
+../Core/Src/maze.c:381:6:Maze_Is_At_Goal	4	static
+../Core/Src/maze.c:393:6:Maze_Explore_To_Goal	16	static

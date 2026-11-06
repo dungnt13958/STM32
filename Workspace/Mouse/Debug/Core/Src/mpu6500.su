@@ -1,0 +1,7 @@
+../Core/Src/mpu6500.c:10:13:delay_ms	24	static,ignoring_inline_asm
+../Core/Src/mpu6500.c:16:16:SPI2_Transfer	16	static
+../Core/Src/mpu6500.c:23:13:MPU_Write	16	static
+../Core/Src/mpu6500.c:30:13:MPU_Read	32	static
+../Core/Src/mpu6500.c:39:6:MPU_Init	16	static
+../Core/Src/mpu6500.c:67:6:MPU_Calibrate_Zero	40	static
+../Core/Src/mpu6500.c:80:7:MPU_Get_Calibrated_GZ	16	static

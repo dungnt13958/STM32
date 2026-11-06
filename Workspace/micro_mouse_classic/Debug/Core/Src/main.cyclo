@@ -1,0 +1,15 @@
+../Drivers/CMSIS/Include/core_cm4.h:1684:22:__NVIC_EnableIRQ	2
+../Drivers/CMSIS/Include/core_cm4.h:1814:22:__NVIC_SetPriority	2
+../Core/Src/main.c:31:13:Telemetry_Init	1
+../Core/Src/main.c:56:6:Telemetry_Tick_5ms	8
+../Core/Src/main.c:84:6:USART1_IRQHandler	5
+../Core/Src/main.c:126:13:Main_Set_4LEDs	5
+../Core/Src/main.c:137:13:Main_Display_Mode_LED	5
+../Core/Src/main.c:152:13:Main_Countdown_Start	2
+../Core/Src/main.c:167:13:Main_Run_Straight_120cm	5
+../Core/Src/main.c:226:13:Main_Run_Square_18cm	4
+../Core/Src/main.c:267:13:Main_Is_Goal	5
+../Core/Src/main.c:273:13:Main_Advance_Coordinates	7
+../Core/Src/main.c:285:13:Main_Turn_To_Direction	7
+../Core/Src/main.c:298:13:Main_Run_Maze_Search	3
+../Core/Src/main.c:343:5:main	8
